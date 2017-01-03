@@ -1,4 +1,5 @@
 import React from "react";
+import { Router, Route, IndexRoute, Link, IndexLink,hashHistory } from 'react-router'
 /**
  * 
  * 
@@ -23,6 +24,7 @@ class Header extends React.Component{
 Header.defaultProps={
     hasback:true
 }
+const ACTIVE = { color: 'red' };
 //fooer
 class Footer extends React.Component {
     constructor(...args) {
@@ -34,13 +36,13 @@ class Footer extends React.Component {
         return <ul className="footer" style={hasFooter}>
             {
                 this.props.data.map((ele,index)=>
-                <li key={index} className={this.props.active==index?"active":""}>{ele}</li>
+                <li key={index} className={this.props.active==index?"active":""} ><Link to={ele.name} activeStyle={ACTIVE}>{ele.val}</Link></li>
                 )
             }
         </ul>
     }
 }
-Footer.defaultProps={data:["首页","分类","购物车","我的","更多"]}
+Footer.defaultProps={data:[{"name":"/","val":"首页"},{"name":"/classs","val":"分类"},{"name":"/carList","val":"购物车"},{"name":"/my","val":"我的"},{"name":"/more","val":"更多"}]}
 //content
 class Content extends React.Component {
     constructor(...args) {
