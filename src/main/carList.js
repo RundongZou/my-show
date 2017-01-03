@@ -1,5 +1,6 @@
 import React from "react";
 import {Header,Content,Footer} from "./../components/common1"
+import "./../css/carList.css"
 class CarList extends React.Component{
     constructor(props){
         super(props)
