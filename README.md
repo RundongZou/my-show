@@ -11,3 +11,8 @@ Footer 可选属性
 Content 可选属性
     1、hasFooter={true|false} 是否有底部  （选填,默认false）
     2、hasSubHeader={true|false} 是否有辅助菜单  （选填,默认false）
+Content 可以写成
+<Content>
+    {children}
+</Content>
+修改的时候修改对应的main 里面的js和css里面的css
