@@ -7,7 +7,6 @@ import Classs from "./../main/classs.js"
 import CarList from "./../main/carList"
 import My from "./../main/my"
 import More from "./../main/More"
-import "lib/rem.js"
 import "./../css/commom1.css"
 class Page extends React.Component{
     constructor(props){
@@ -15,9 +14,9 @@ class Page extends React.Component{
     }
     render(){
         return <div className="page">
-            <Header hasRightBtn={"搜索"}/>
-            <Content hasFooter={true}/>
-            <Footer hasFooter={true}/>
+//          <Header hasRightBtn={"搜索"}/>
+//          <Content hasFooter={true}/>
+//          <Footer hasFooter={true}/>
         </div>
     }
 }
@@ -29,4 +28,5 @@ ReactDOM.render((
             <Route path="/my" component={My}/>
             <Route path="/more" component={More}/>
     </Router>
+
 ), document.getElementById("root"));
