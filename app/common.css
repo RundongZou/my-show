@@ -67,7 +67,7 @@ body,html { height: 100%; overflow: hidden}
 .footer { bottom: 0; height: 50px; line-height:0.5rem; border-top:1px solid #ccc;background: #484850;color:white}
 .footer li { float: left; width: 20%; text-align: center;font-size: 16px;}
 .footer li.active{background: red}
-.footer li span{display: block;height:0.5rem}
+.footer li span{display: block;height:25px}
 .footer li a{color:white;text-decoration: none}
 .pro-name{overflow: hidden;white-space: nowrap;text-overflow: ellipsis;display: block;font-size: 12px;}
 
