@@ -14,6 +14,7 @@ import My from "./../user/components/my"
 //order
 import CarList from "./../order/component/carList"
 import More from "./../order/component/more"
+import MyOrder from "./../order/component/myOrder"
 class Page extends React.Component{
     constructor(props){
         super(props)
@@ -35,6 +36,7 @@ ReactDOM.render((
             <Route path="/more" component={More}/>
             <Route path="/my/login" component={Login}/>
             <Route path="/my/reg" component={Reg}/>
+            <Route path="/order/myOrder" component={MyOrder}/>
     </Router>
 
 ), document.getElementById("root"));

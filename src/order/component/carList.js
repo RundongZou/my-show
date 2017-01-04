@@ -35,16 +35,10 @@ class CarList extends React.Component{
                 "goodsID":id,
                 "number":num
          }
-         this.state={
-            "carListData":[],
-            "quality":0,
-            "totalPrice":0
-         }
          clearTimeout(this.Timer);
          this.Timer=setTimeout(function(){
             $.get("http://datainfo.duapp.com/shopdata/updatecar.php",data,(data)=>{
                     console.log(data);
-                    console.log(_this.getData)
                     _this.getData();
                 })
             },600)
@@ -54,7 +48,6 @@ class CarList extends React.Component{
     }
     getData(){
         $.getJSON("http://datainfo.duapp.com/shopdata/getCar.php?userID="+userID+"&callback=?",(data)=>{
-            console.log(data)
             var quality=0;
             var totalPrice=0;
             for(var i=0;i<data.length;i++){
@@ -69,11 +62,11 @@ class CarList extends React.Component{
                 "quality":quality,
                 "totalPrice":totalPrice
             })
+            console.log(data)
         })
     }
     render(){
         if(userID){
-            console.log(this.state.carListData)
             return <div className="page" id="carList">
                 <Header hasRightBtn={"结算"} title="购物车" hasback={false}/>
                 <SubHeader quality={this.state.quality} totalPrice={this.state.totalPrice}/>
@@ -92,11 +85,11 @@ class CarList extends React.Component{
                                                 <p className="goodsName">{ele.goodsName}</p>
                                                 <p className="price">￥{ele.price}</p>
                                                 <p className="number">数量:
-                                                    <button className="btn sub" onClick={(index)=>{this.changeQua(index,ele.goodsID,parseInt(ele.number)-1)}}>-</button>
+                                                    <button className="btn sub" onClick={()=>{this.changeQua(index,ele.goodsID,parseInt(ele.number)-1)}}>-</button>
                                                     <input type="text" name=""  defaultValue={ele.number} />
-                                                    <button className="btn add" onClick={()=>{}}>+</button>
+                                                    <button className="btn add" onClick={()=>{this.changeQua(index,ele.goodsID,parseInt(ele.number)+1)}}>+</button>
                                                 </p>
-                                                <button className="btn del" onClick={()=>{}}>x</button>
+                                                <button className="btn del" onClick={()=>{this.changeQua(index,ele.goodsID,0)}}>x</button>
                                             </div>
                                         </li>
                                     )
