@@ -1,5 +1,5 @@
 import React from "react";
-import {Header,Content,Footer} from "./../components/common1"
+import {Header,Content,Footer} from "./../../components/common1"
 import "./../css/my.css"
 class My extends React.Component{
     constructor(props){

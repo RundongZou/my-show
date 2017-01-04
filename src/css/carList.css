@@ -1,8 +1,0 @@
-.subHeader{top:50px;height:30px;background: #747474}
-.subHeader p{height:30px;width:100%;line-height:30px;font-size:0.2rem;text-align: center;color:white}
-.subHeader p .price{color:#ab191a}
-
-.ShopList{width: 100%;}
-.ShopList li{height:2.34rem;border-bottom: 1px solid black;padding:0.28rem}
-.ShopList li .imgBox{width: 1.75rem;height:1.75rem;float: left;background: #ccc}
-.ShopList li .goodsBox{width: 4rem;height:1.75rem;float: left;line-height: 0.43rem}

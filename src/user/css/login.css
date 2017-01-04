@@ -1,0 +1,88 @@
+/**
+        作者：lily
+        时间：2016-12-15
+        描述：
+*/
+.content {
+    padding: 0.32rem;
+    background: #f3eff0;
+}
+.content .login-list {
+    width: 100%;
+    height: 80%;
+}
+.content li {
+    width: 100%;
+    height: 44px;
+    margin: 6px 0;
+}
+.content .username,
+.content .password {
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    padding: 0.2rem;
+    font-size: 0.28rem;
+}
+.content .check-item {
+    height: 50px;
+    line-height: 20px;
+    padding-top: 23px;
+}
+.content .check-item a,
+.content .check-item span {
+    font-size: 0.32rem;
+}
+.content .forget {
+    color: #ff0e52;
+}
+.content .tishi {
+    height: 40px;
+    font-size: 0.4rem;
+    color: #920300;
+    text-align: center;
+    line-height: 40px;
+}
+.content .tishi .iconfont {
+    font-size: 0.5rem;
+    padding: 0 0.3rem;
+}
+.content .to {
+    height: 70px;
+}
+.content .to input {
+    color: #fff;
+    width: 100%;
+    height: 45px;
+    border-radius: 5px;
+    font-size: 0.32rem;
+}
+.content .to .login-btn {
+    background: -webkit-linear-gradient(top, #df3535, #aa0404);
+    margin: 25px 0 6px 0;
+    border: 1px solid #840000;
+}
+.content .to input {
+    background: -webkit-linear-gradient(top, #7d7d7d, #222222);
+    border-radius: 5px;
+    display: block;
+    border: 1px solid #000;
+}
+.loading {
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    display: none;
+}
+.loading img {
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    left: 40%;
+    top: 50%;
+}
