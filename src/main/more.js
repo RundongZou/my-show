@@ -6,7 +6,7 @@ class More extends React.Component{
         super(props)
     }
     render(){
-        return <div className="page">
+        return <div className="page" id="more">
             <Header hasRightBtn={"更多"} hasback={false} title="更多"/>
             <Content hasFooter={true}/>
             <Footer hasFooter={true}/>

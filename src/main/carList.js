@@ -46,7 +46,7 @@ class CarList extends React.Component{
         console.log("最大的下拉为："+myscroll.maxScrollY)
     }
     render(){
-        return <div className="page">
+        return <div className="page" id="carList">
             <Header hasRightBtn={"结算"} title="购物车" hasback={false}/>
             <SubHeader/>
             <Content hasFooter={true} hasSubHeader={true}>

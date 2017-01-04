@@ -6,7 +6,7 @@ class Index extends React.Component{
         super(props)
     }
     render(){
-        return <div className="page">
+        return <div className="page" id="index">
             <Header  hasback={false}/>
             <Content hasFooter={true}/>
             <Footer hasFooter={true}/>

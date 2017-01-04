@@ -6,7 +6,7 @@ class Classs extends React.Component{
         super(props)
     }
     render(){
-        return <div className="page">
+        return <div className="page" id="classs">
             <Header hasRightBtn={"car"} title={"新品上市"} hasback={false}/>
             <Content hasFooter={true}>
             </Content>

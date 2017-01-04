@@ -6,7 +6,7 @@ class My extends React.Component{
         super(props)
     }
     render(){
-        return <div className="page">
+        return <div className="page" id="my">
             <Header hasRightBtn={"充值"} title="我的秀"/>
             <Content hasFooter={true}/>
             <Footer hasFooter={true}/>

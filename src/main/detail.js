@@ -5,7 +5,7 @@ class Detail extends React.Component{
         super(props)
     }
     render(){
-        return <div className="page">
+        return <div className="page" id="detail">
             <Header hasRightBtn={"car"} title={"新品上市"} hasback={false}/>
             <Content hasFooter={true}/>
             <Footer hasFooter={true}/>
