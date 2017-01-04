@@ -6,7 +6,13 @@ import "./../css/login.css"
 import React from "react";
 
 import {Header,Content,Footer} from "./../../components/common1"
-
+class Tip extends React.Component{
+    render(){
+        return (
+            <div className="loading">登录成功</div>
+        )
+    }
+}
 class Loginlist extends React.Component{
     constructor(props){
         super(props);
@@ -14,83 +20,68 @@ class Loginlist extends React.Component{
             ShowPassword:false,
             password:"",
             username:"",
-            regusername:false,
-            regpassword:false,
-            tip:"2323"
+            rememberPassword:false,
+            tip:""
         }
 
     }
     changeShowPassword () {
         var ShowPassword=!this.state.ShowPassword
-        console.log(ShowPassword)
         this.setState({
             ShowPassword:ShowPassword
         })
-
     }
-    RegUsername(e) {
-        var reg=new RegExp()
-        reg = /^[A-Za-z0-9]{4,16}$/g;
-        if(reg.test(e.target.value)){
-            this.setState({
-                regusername:true
-            })
-        }
+    changeUsername(e) {
         this.setState({
-            username:e.target.value
+            username:e.target.value,
+            tip:""
         })
 
     }
-    RegPassword (e) {
-        console.log(e.target.value)
-        var reg=new RegExp()
-        reg = /^[A-Za-z0-9]{4,16}$/g;
-        if(reg.test(e.target.value)){
-            this.setState({
-                regpassword:true
-            })
-        }
+    changePassword (e) {
         this.setState({
-            password:e.target.value
+            password:e.target.value,
+            tip:""
+        })
+    }
+    rememberPassword(){
+        var rememberPassword = !this.state.rememberPassword
+        this.setState({
+            rememberPassword:rememberPassword
         })
     }
     toLogin(){
         var userData = {"userID":this.state.username,"password":this.state.password}
-        console.log(this.state.username+"----username")
-        console.log(this.state.regusername+"----regusername")
-        console.log(this.state.password+"----password")
-        console.log(this.state.regpassword+"----regpassword")
-        if(this.state.regusername && this.state.regpassword){
-            $.get("http://datainfo.duapp.com/shopdata/userinfo.php?status=login",userData,(data)=>{
-                console.log(data)
-                if(data == 2){
-
-                    console.log("密码输入有误")
-                }else if(data == 0){
-
-                    console.log("用户不存在")
-                }else{
+        $.get("http://datainfo.duapp.com/shopdata/userinfo.php?status=login",userData,(data)=>{
+            if(data == 2){
+                this.setState({
+                    tip:"信息输入有误"
+                })
+            }else if(data == 0){
+                this.setState({
+                    tip:"用户不存在"
+                })
+            }else{
+                if(this.state.rememberPassword){
+                    window.localStorage.setItem("userID",this.state.username+"&&"+this.state.password)
+                }else {
                     window.localStorage.setItem("userID",this.state.username)
-                    console.log("登录成功")
                 }
-            })
-        }else{
-            if(!this.state.regusername){
-                console.log("用户名输入有误")
+                window.location = "/"
             }
-            if(!this.state.regpassword){
-                console.log("密码输入不合法")
-            }
-        }
+        })
+    }
+    toReg(){
+        window.location = "/#/my/reg"
     }
     render(){
         return (
             <ul className="login-list">
                 <li>
-                    <input className="username" onChange={(e)=>this.RegUsername(e)} type="text" placeholder="用户名" value={this.state.username}/>
+                    <input className="username" onChange={(e)=>this.changeUsername(e)} type="text" placeholder="用户名" value={this.state.username}/>
                 </li>
                 <li>
-                    <input  className="password" onChange={(e)=>this.RegPassword(e)} type={this.state.ShowPassword?"text":"password"} placeholder="密码"  />
+                    <input  className="password" onChange={(e)=>this.changePassword(e)} type={this.state.ShowPassword?"text":"password"} placeholder="密码"  />
                 </li>
                 <li className="check-item" >
                     <label>
@@ -101,7 +92,7 @@ class Loginlist extends React.Component{
                 </li>
                 <li className="check-item">
                     <label>
-                        <input type="checkbox" />
+                        <input type="checkbox" onClick={()=>this.rememberPassword()}/>
                         <span>记住密码</span>
                     </label>
 
@@ -111,25 +102,22 @@ class Loginlist extends React.Component{
                     <input className="login-btn" type="button" value="登录"  onClick={()=>this.toLogin()}/>
                 </li>
                 <li  className="to">
-                    <input type="button" value="注册" />
-
+                    <input type="button" value="注册" onClick={()=>this.toReg()}/>
                 </li>
             </ul>
         )
     }
 }
-
-
 class Login extends React.Component{
     render(){
         return (
             <div className="login-page" id="login-page">
-                <Header />
+                <Header title={"开心摇一摇用户登录"} />
                 <Content hasFooter={true}>
                     <Loginlist/>
                 </Content>
-
                 <Footer hasFooter={true}/>
+                <Tip/>
             </div>
         )
     }
