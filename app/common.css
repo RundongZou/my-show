@@ -1,3 +1,60 @@
+@font-face {
+  font-family: "iconfont";
+  src: url('//at.alicdn.com/t/font_3hnz10xrzruow29.eot?t=1481980462331');
+  /* IE9*/
+  
+  src: url('//at.alicdn.com/t/font_3hnz10xrzruow29.eot?t=1481980462331#iefix') format('embedded-opentype'),
+  /* IE6-IE8 */
+  
+  url('//at.alicdn.com/t/font_3hnz10xrzruow29.woff?t=1481980462331') format('woff'),
+  /* chrome, firefox */
+  
+  url('//at.alicdn.com/t/font_3hnz10xrzruow29.ttf?t=1481980462331') format('truetype'),
+  /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  
+  url('//at.alicdn.com/t/font_3hnz10xrzruow29.svg?t=1481980462331#iconfont') format('svg');
+  /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-gengduo:before {
+  content: "\e600";
+}
+
+.icon-gouwuche:before {
+  content: "\e601";
+}
+
+.icon-shouye:before {
+  content: "\e6bd";
+}
+
+.icon-shanchu:before {
+  content: "\e7de";
+}
+
+.icon-zuo:before {
+  content: "\e63d";
+}
+
+.icon-my:before {
+  content: "\e607";
+}
+
+.icon-fenlei:before {
+  content: "\e602";
+}
+
+.icon-gouwuche1:before {
+  content: "\e624";
+}
 * { margin: 0; padding: 0; box-sizing: border-box}
 li { list-style: none}
 body,html { height: 100%; overflow: hidden}
@@ -7,10 +64,11 @@ body,html { height: 100%; overflow: hidden}
 .header-btn { width: 60px;}
 .header-tit { flex: 1;}
 .content { top: 50px; bottom: 50px;}
-.footer { bottom: 0; height: 50px; line-height: 50px; border-top:1px solid #ccc;background: #484850;color:white}
+.footer { bottom: 0; height: 50px; line-height:0.5rem; border-top:1px solid #ccc;background: #484850;color:white}
 .footer li { float: left; width: 20%; text-align: center;font-size: 16px;}
 .footer li.active{background: red}
-.footer li a{color:white}
+.footer li span{display: block;height:0.5rem}
+.footer li a{color:white;text-decoration: none}
 .pro-name{overflow: hidden;white-space: nowrap;text-overflow: ellipsis;display: block;font-size: 12px;}
 
 
