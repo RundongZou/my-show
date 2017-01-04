@@ -117,7 +117,7 @@ class IndexPage extends Component {
 	render () {
 		return (
 			<div className="page" id="list_page">
-				<Header title="首页" hasback={false}/>		
+				<Header title="首页" hasback={false} />		
 				<Footer hasFooter={true}/>
 			</div>
 		)
