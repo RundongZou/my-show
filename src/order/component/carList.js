@@ -65,10 +65,14 @@ class CarList extends React.Component{
             console.log(data)
         })
     }
+    toOrder(){
+        localStorage.setItem("order",JSON.stringify(this.state.carListData));
+        window.location.href="#/order/myOrder"
+    }
     render(){
         if(userID){
             return <div className="page" id="carList">
-                <Header hasRightBtn={"结算"} title="购物车" hasback={false}/>
+                <Header hasRightBtn={<a onClick={()=>{this.toOrder()}}>结算</a>} title="购物车" hasback={false}/>
                 <SubHeader quality={this.state.quality} totalPrice={this.state.totalPrice}/>
                 <Content hasFooter={true} hasSubHeader={true}>
                     
@@ -86,7 +90,7 @@ class CarList extends React.Component{
                                                 <p className="price">￥{ele.price}</p>
                                                 <p className="number">数量:
                                                     <button className="btn sub" onClick={()=>{this.changeQua(index,ele.goodsID,parseInt(ele.number)-1)}}>-</button>
-                                                    <input type="text" name=""  defaultValue={ele.number} />
+                                                    <input type="text" name=""  value={ele.number} readOnly/>
                                                     <button className="btn add" onClick={()=>{this.changeQua(index,ele.goodsID,parseInt(ele.number)+1)}}>+</button>
                                                 </p>
                                                 <button className="btn del" onClick={()=>{this.changeQua(index,ele.goodsID,0)}}>x</button>
