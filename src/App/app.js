@@ -33,6 +33,8 @@ ReactDOM.render((
             <Route path="/carList" component={CarList}/>
             <Route path="/my" component={My}/>
             <Route path="/more" component={More}/>
+            <Route path="/my/login" component={Login}/>
+            <Route path="/my/reg" component={Reg}/>
     </Router>
 
 ), document.getElementById("root"));
