@@ -36,13 +36,13 @@ class Footer extends React.Component {
         return <ul className="footer" style={hasFooter}>
             {
                 this.props.data.map((ele,index)=>
-                <li key={index} className={this.props.active==index?"active":""} ><Link to={ele.name} activeStyle={ACTIVE}>{ele.val}</Link></li>
+                <li key={index} className={this.props.active==index?"active":""} ><span className={"icon iconfont "+ele.icon}></span><Link to={ele.name} activeStyle={ACTIVE}>{ele.val}</Link></li>
                 )
             }
         </ul>
     }
 }
-Footer.defaultProps={data:[{"name":"/","val":"首页"},{"name":"/classs","val":"分类"},{"name":"/carList","val":"购物车"},{"name":"/my","val":"我的"},{"name":"/more","val":"更多"}]}
+Footer.defaultProps={data:[{"name":"/","val":"首页","icon":"icon-shouye"},{"name":"/classs","val":"分类","icon":"icon-fenlei"},{"name":"/carList","val":"购物车","icon":"icon-gouwuche"},{"name":"/my","val":"我的","icon":"icon-my"},{"name":"/more","val":"更多","icon":"icon-gengduo"}]}
 //content
 class Content extends React.Component {
     constructor(...args) {

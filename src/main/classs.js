@@ -8,7 +8,8 @@ class Classs extends React.Component{
     render(){
         return <div className="page">
             <Header hasRightBtn={"car"} title={"新品上市"} hasback={false}/>
-            <Content hasFooter={true}/>
+            <Content hasFooter={true}>
+            </Content>
             <Footer hasFooter={true}/>
         </div>
     }
