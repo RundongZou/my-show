@@ -2,8 +2,9 @@
 import React, {Component} from  "react";
 import ReactDOM from "react-dom";
 import ReactIScroll from "react-iscroll";
+import {Header,Footer} from "./../../components/common1"
 //自定义组件
-import { Header, Sub_header, Content, Footer, Loading } from "../components/list_common";
+import {Sub_header, Content, Loading } from "../components/list_common";
 import Pro_list from "../components/pro_list";
 import {scroll_options} from "../config/config";
 
@@ -116,7 +117,7 @@ class ListPage extends Component {
 	render () {
 		return (
 			<div className="page" id="list_page">
-				<Header tit="列表"/>		
+				<Header title="新品上市" hasback={false} hasRightBtn={"搜索"}/>		
 				<Sub_header>
 					<Class_list change_classID={(id)=>this.change_classID(id)}  class_data={this.state.class_data} />
 				</Sub_header>
@@ -126,7 +127,7 @@ class ListPage extends Component {
 						<Pro_list product_data={this.state.product_data} />
 					</ReactIScroll>					
 				</Content>
-				<Footer/>
+				<Footer  hasFooter={true}/>
 			</div>
 		)
 	}

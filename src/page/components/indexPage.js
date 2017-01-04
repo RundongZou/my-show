@@ -2,8 +2,9 @@
 import React, {Component} from  "react";
 import ReactDOM from "react-dom";
 import ReactIScroll from "react-iscroll";
+import {Header,Footer} from "./../../components/common1"
 //自定义组件
-import { Header, Sub_header, Content, Footer, Loading } from "./../components/list_common";
+import {Sub_header, Content,Loading } from "./../components/list_common";
 import Pro_list from "./../components/pro_list";
 import {scroll_options} from "./../config/config";
 
@@ -116,8 +117,8 @@ class IndexPage extends Component {
 	render () {
 		return (
 			<div className="page" id="list_page">
-				<Header tit="首页"/>		
-				<Footer/>
+				<Header title="首页" hasback={false}/>		
+				<Footer hasFooter={true}/>
 			</div>
 		)
 	}
