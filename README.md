@@ -16,3 +16,10 @@ Content 可以写成
     {children}
 </Content>
 修改的时候修改对应的main 里面的js和css里面的css
+
+再次声明！ 编写css文件的时候 记得前面加上自己的ID   
+例如
+#list_page .content {
+	overflow-y: auto;
+}
+不要直接写 .content {overflow-y: auto;}   不要直接写，不要直接写！！！

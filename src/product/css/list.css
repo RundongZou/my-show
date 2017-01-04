@@ -10,44 +10,44 @@
 #list_page .content {
   overflow: hidden; }
 
-.pro_list {
+#list_page .pro_list {
   overflow: hidden; }
 
 /*弹性盒不能用于需要换行的布局*/
-.pro_item {
+#list_page .pro_item {
   float: left;
   width: 3.2rem;
   padding: .2rem .37rem;
   width: 50%; }
-  .pro_item .pic {
+#list_page  .pro_item .pic {
     width: 2.44rem;
     box-shadow: 0 0 1px #000;
     display: block;
     padding: .06rem; }
-  .pro_item img {
+#list_page  .pro_item img {
     width: 2.32rem;
     height: 2.32rem; }
-  .pro_item .pro_name {
+ #list_page .pro_item .pro_name {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     display: block; }
-  .pro_item p {
+ #list_page .pro_item p {
     line-height: 1.8; }
-  .pro_item .price {
+ #list_page .pro_item .price {
     overflow: hidden; }
-  .pro_item em {
+ #list_page .pro_item em {
     float: left;
     color: #e22;
     font-size: 16px; }
-  .pro_item del {
+#list_page  .pro_item del {
     float: right; }
 
-.content {
+#list_page .content {
 	overflow-y: auto;
 }
 
 /*下拉刷新 文字*/
-.refresh_text {
+#list_page .refresh_text {
 	position: absolute;
 }
