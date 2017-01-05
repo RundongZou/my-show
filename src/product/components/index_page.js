@@ -33,7 +33,7 @@ class Class_list extends Component {
 }
 
 // 最外面的主体
-class IndexPage extends Component {
+class Index_page extends Component {
 	constructor (props) {
 		super(props);
 		this.state = {
@@ -127,7 +127,7 @@ class IndexPage extends Component {
 $("body document").append($("#loading"));
 
 
-export {IndexPage};
+export {Index_page};
 
 //var x = 1;
 //function fn1() {

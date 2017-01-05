@@ -42,7 +42,7 @@ class Footer extends React.Component {
         </ul>
     }
 }
-Footer.defaultProps={data:[{"name":"/","val":"首页","icon":"icon-shouye"},{"name":"/classs","val":"分类","icon":"icon-fenlei"},{"name":"/carList","val":"购物车","icon":"icon-gouwuche"},{"name":"/my","val":"我的","icon":"icon-my"},{"name":"/more","val":"更多","icon":"icon-gengduo"}]}
+Footer.defaultProps={data:[{"name":"/","val":"首页","icon":"icon-shouye"},{"name":"/list","val":"分类","icon":"icon-fenlei"},{"name":"/carList","val":"购物车","icon":"icon-gouwuche"},{"name":"/my","val":"我的","icon":"icon-my"},{"name":"/more","val":"更多","icon":"icon-gengduo"}]}
 //content
 class Content extends React.Component {
     constructor(...args) {

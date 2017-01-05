@@ -2,10 +2,13 @@ import {Header,Content,Footer} from "./../components/common1"
 import React from "react";
 import ReactDOM from "react-dom"
 import { Router, Route, IndexRoute, Link, IndexLink,hashHistory } from 'react-router'
-import {IndexPage} from "./../product/components/indexPage"
-import Pro_list from "./../product/components/pro_list"
-import {ListPage} from "./../product/components/listPage"
-import {Detail} from "./../product/components/detailPage"
+
+// 自定义组件
+// product
+import {Index_page} from "./../product/components/index_page"
+import {List_page} from "./../product/components/list_page"
+import {Detail_page} from "./../product/components/detail_page"
+import {Pro_list} from "./../product/components/pro_list"
 
 //user
 import Login from "./../user/components/login"
@@ -29,8 +32,9 @@ class Page extends React.Component{
 }
 ReactDOM.render((
     <Router history={hashHistory}>
-            <Route path="/" component={IndexPage} />
-            <Route path="/classs" component={ListPage} />
+            <Route path="/" component={Index_page} />
+            <Route path="/list" component={List_page} />
+            <Route path="/detail(/:goodsID)" component={Detail_page} />
             <Route path="/carList" component={CarList}/>
             <Route path="/my" component={My}/>
             <Route path="/more" component={More}/>

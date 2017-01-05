@@ -3,10 +3,11 @@ import React, {Component} from  "react";
 import ReactDOM from "react-dom";
 import ReactIScroll from "react-iscroll";
 import {Header,Footer} from "./../../components/common1"
+
 //自定义组件
 import {Sub_header, Content, Loading } from "../components/list_common";
 import Pro_list from "../components/pro_list";
-import {scroll_options} from "../config/config";
+import {scroll_options} from "../../config/config";
 
 require("../css/common.css");
 require("../css/list.css");
@@ -33,7 +34,7 @@ class Class_list extends Component {
 }
 
 // 最外面的主体
-class ListPage extends Component {
+class List_page extends Component {
 	constructor (props) {
 		super(props);
 		this.state = {
@@ -103,7 +104,7 @@ class ListPage extends Component {
 				this.pageCode ++;
 				this.get_product_data();
 			}	
-			window.scrollTo(0, 0)
+			//window.scrollTo(0, 0)
 		}
 	
 		onScroll (myScroll) {
@@ -133,17 +134,7 @@ class ListPage extends Component {
 	}
 }
 
-$("body document").append($("#loading"));
+//$("body document").append($("#loading"));
 
-export {ListPage};
+export {List_page};
 
-//var x = 1;
-//function fn1() {
-//	//var x = 3;
-//	console.log(x)
-//}
-//function fn2() {
-//	var x = 2;
-//	fn1()
-//}
-//fn2()

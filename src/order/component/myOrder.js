@@ -5,7 +5,7 @@ import ReactIScroll from "react-iscroll";
 import {options} from "./../../config/config"
 import "./../css/myOrder.css"
 var userID=localStorage["userID"];
-var order=JSON.parse(localStorage["order"])?JSON.parse(localStorage["order"]):[];
+var order=localStorage["order"]?JSON.parse(localStorage["order"]):[];
 //二级头部模块
 // Pending payment待付款  Pay Now 立即付款  cancel order取消订单
 class Action{
@@ -50,9 +50,8 @@ class MyOrder extends React.Component{
             })
         }
     }
-    
     render(){
-        if(!userID){
+        if(order.length<1){
             return <div className="page" id="myOrder-page">
                 <Header  title="我的订单" hasback={false}/>
                 <SubHeader data={["全部","待付款","待发货","待收货","待评价"]} num={this.state.num} fn={this.fnClick}/>
@@ -90,7 +89,6 @@ class MyOrder extends React.Component{
                                 <p>共<span className="active">{this.state.totalNum}</span>件 商品实付<span  className="active">￥{this.state.totalPrice.toFixed(1)}</span></p>
                             </div>
                             <div className="orderBox">
-                            
                                 <span>待付款</span><button>立即付款</button><button>取消订单</button>
                             </div>
                         </div>  
@@ -98,7 +96,6 @@ class MyOrder extends React.Component{
                 </Content>
             </div>
         }
-        
     }
 }
 export default MyOrder

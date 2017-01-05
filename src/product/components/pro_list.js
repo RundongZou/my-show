@@ -10,7 +10,7 @@ class Pro_list extends Component {
 			<ul className="pro_list">{
     			this.props.product_data.map((ele, ind) => (
     				<li key={ind} className="pro_item"> 
-                        <a href="###" className="pic"><img src={ele.goodsListImg} alt="" /></a> 
+                        <a href={"#/detail/"+ele.goodsID} className="pic"><img src={ele.goodsListImg} alt="" /></a> 
                         <p className="pro_name">{ele.goodsName}</p>
                         <p className="price"><em>{ele.price}</em> <del>￥668</del></p> 
                     </li>
