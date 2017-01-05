@@ -20,6 +20,7 @@ import More from "./../order/component/more"
 import MyOrder from "./../order/component/myOrder"
 import ChgpassWd from "./../order/component/chgpasswd"
 import Feedback from "./../order/component/feedback"
+import Confirm from "./../order/component/confirm"
 class Page extends React.Component{
     constructor(props){
         super(props)
@@ -45,5 +46,6 @@ ReactDOM.render((
             <Route path="/my/chgpassWd" component={ChgpassWd}/>
             <Route path="/my/feedback" component={Feedback}/>
             <Route path="/order/myOrder" component={MyOrder}/>
+            <Route path="/order/confirm" component={Confirm}/>
     </Router>
 ), document.getElementById("root"));
