@@ -7,17 +7,7 @@
 import "./../css/reg.css"
 import React from "react";
 import {Header,Content,Footer} from "./../../components/common1"
-let Action={
 
-}
-class Tip extends React.Component{
-    render(){
-        var display = this.props.loading?"block":"none";
-        return (
-            <div className="loading" style={{"display":display}}><div className="loading"><img src="./img/loading.gif"/></div></div>
-        )
-    }
-}
 class Reglist extends React.Component{
     constructor(props){
         super(props)
@@ -73,11 +63,7 @@ class Reglist extends React.Component{
         if(this.state.regusername && this.state.regpassword && this.state.password==this.state.password1){
             $.get("http://datainfo.duapp.com/shopdata/userinfo.php?status=register",userData,(data)=>{
                 if(data == 1){
-                    Action.loadStart()
-                    setTimeout(()=>{
-                        window.location = "/#/my/login"
-                        Action.loadEnd()
-                    },2000)
+                   window.location = "/#/my/login"
                 }else{
                    this.setState({
                        tip:"用户已存在"
@@ -125,22 +111,6 @@ class Reglist extends React.Component{
 
 
 class Reg extends React.Component{
-    constructor(props){
-        super(props)
-        this.state={
-            loading:false,
-        }
-        Action.loadStart=()=>{
-            this.setState({
-                loading:true
-            })
-        }
-        Action.loadEnd=()=>{
-            this.setState({
-                loading:false
-            })
-        }
-    }
     render(){
         return (
             <div className="reg-page" id="reg-page">
@@ -148,7 +118,6 @@ class Reg extends React.Component{
                 <Content>
                     <Reglist/>
                 </Content>
-                <Tip loading={this.state.loading}/>
             </div>
         )
     }

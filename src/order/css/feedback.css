@@ -1,6 +1,6 @@
 /**
         作者：lily
-        时间：2016-1-4
+        时间：2016-1-3
         描述：
 */
 #feedback{
@@ -16,22 +16,21 @@
 }
 #feedback .content li {
     width: 100%;
-    height: 66px;
+    height: 45px;
+    margin-bottom: 16px;
 }
 #feedback .content .feedback-content{
     height: 220px;
     border: 1px solid #e6e6e6;
     background: #ffffff;
     border-radius: 20px;
-    padding: 12px;
-    font-size: 0.16rem;
+    padding: 10px;
     overflow: hidden;
 }
 #feedback .content .tishi {
     font-size: 0.4rem;
     color: #920300;
-    text-align: center;
-    line-height: 66px;
+    line-height: 45px;
 }
 #feedback .content .tishi .iconfont {
     font-size: 0.5rem;
@@ -39,6 +38,7 @@
 }
 #feedback .content .to-submit {
     height: 70px;
+    padding-top: 40px;
 }
 #feedback .content .submit {
     color: #fff;

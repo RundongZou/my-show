@@ -25,13 +25,8 @@
 #more .more-list a{
     color: #222222;
     display: inline-block;
-<<<<<<< HEAD
-    height: 100%;
-    width: 100%;
-=======
     width: 100%;
     height: 100%;
->>>>>>> 20490b4260716e36988d9afe4abe905a350bc981
 }
 #more .more-list .list-left{
     float: left;

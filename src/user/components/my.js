@@ -34,18 +34,6 @@ class List extends React.Component{
 class MyContent extends React.Component{
     constructor(props) {
         super(props)
-<<<<<<< HEAD
-        var anonymous = JSON.parse(window.localStorage.getItem("user"))
-        if (anonymous) {
-            this.state={
-                anonymous:anonymous.id,
-                userHead:anonymous.userHead
-            }
-        }else {
-            this.state={
-                anonymous:"未知",
-                userHead:""
-=======
         var anonymous = window.localStorage.getItem("user")?JSON.parse(window.localStorage.getItem("user")):{
             "id":this.state.username,
             "password":this.state.password,
@@ -55,7 +43,6 @@ class MyContent extends React.Component{
         if (anonymous) {
             this.state = {
                 "anonymous": anonymous
->>>>>>> 20490b4260716e36988d9afe4abe905a350bc981
             }
         }
     }
@@ -68,16 +55,11 @@ class MyContent extends React.Component{
             <div className="content-list">
                 <div className="content-top">
                     <div className="content-left">
-                        <img src={this.state.userHead} alt=""/>
+                        <img src="" alt=""/>
                     </div>
                     <div className="content-right">
-<<<<<<< HEAD
-                        <p className="anonymous">匿名 : {this.state.anonymous}</p>
-                        <p>余额 : <span className="balance">0</span></p>
-=======
                         <div className="anonymous"><span>昵称 :</span><span className="name">{this.state.anonymous.id}</span></div>
                         <div>余额 : <span className="balance"></span></div>
->>>>>>> 20490b4260716e36988d9afe4abe905a350bc981
                     </div>
                 </div>
                 <List listData={listData}/>
