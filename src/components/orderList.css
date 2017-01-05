@@ -1,0 +1,8 @@
+.orderList{border-top:2px solid #d7d7d7;border-bottom:2px solid #d7d7d7;padding:0 0.1rem}
+.orderList .iTem{width: 6.12rem;height:1.78rem;padding:0.3rem 0;border-bottom: 2px solid #d7d7d7}
+.imgBox{width: 1.4rem;height:1.2rem;float: left;}
+.imgBox img{width: 100%;height:100%;}
+.Name{width: 2.3rem;height:1.2rem;float: left;margin:0 0.6rem}
+.goodsInf{width: 0.9rem;height:1.2rem;float: left;}
+.goodsInf p{font-size: 0.2rem;height:0.5rem;line-height: 0.5rem;width: 100%;text-align: right}
+.goodsInf .goodsPrice{color:#fe7a04}

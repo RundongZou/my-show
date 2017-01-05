@@ -3,7 +3,7 @@ import {Header,Content,Footer} from "./../../components/common1"
 import "./../css/carList.css"
 import ReactIScroll from "react-iscroll";
 import {options} from "./../../config/config"
-var userID=localStorage["userID"];
+var userID=localStorage.getItem("user")?JSON.parse(localStorage.getItem("user")).id:""
 class Action{
     
 }
@@ -28,6 +28,7 @@ class CarList extends React.Component{
             "totalPrice":0
         }
     }
+    //更改数量
     changeQua(index,id,num){
         var _this=this;
          var data={
@@ -35,10 +36,10 @@ class CarList extends React.Component{
                 "goodsID":id,
                 "number":num
          }
+         //节流
          clearTimeout(this.Timer);
          this.Timer=setTimeout(function(){
             $.get("http://datainfo.duapp.com/shopdata/updatecar.php",data,(data)=>{
-                    console.log(data);
                     _this.getData();
                 })
             },600)
@@ -46,6 +47,7 @@ class CarList extends React.Component{
     componentWillMount(){
         this.getData()
     }
+    //获取购物车数据
     getData(){
         $.getJSON("http://datainfo.duapp.com/shopdata/getCar.php?userID="+userID+"&callback=?",(data)=>{
             var quality=0;
@@ -62,12 +64,16 @@ class CarList extends React.Component{
                 "quality":quality,
                 "totalPrice":totalPrice
             })
-            console.log(data)
         })
     }
+    //确认订单
     toOrder(){
-        localStorage.setItem("order",JSON.stringify(this.state.carListData));
-        window.location.href="#/order/myOrder"
+        localStorage.setItem("carListData",JSON.stringify({
+            "data":this.state.carListData,
+            "totalNum":this.state.quality,
+            "totalPrice":this.state.totalPrice
+        }));
+        window.location.hash="/order/confirm"
     }
     render(){
         if(userID){

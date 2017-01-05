@@ -118,7 +118,7 @@ class List_page extends Component {
 	render () {
 		return (
 			<div className="page" id="list_page">
-				<Header title="新品上市" hasback={false} hasRightBtn={"搜索"}/>		
+				<Header title="新品上市" hasback={true} hasRightBtn={"搜索"}/>		
 				<Sub_header>
 					<Class_list change_classID={(id)=>this.change_classID(id)}  class_data={this.state.class_data} />
 				</Sub_header>

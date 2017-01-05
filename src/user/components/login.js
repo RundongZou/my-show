@@ -73,17 +73,27 @@ class Loginlist extends React.Component{
                     window.localStorage.setItem("user",JSON.stringify({
                         "id":this.state.username,
                         "password":this.state.password,
+<<<<<<< HEAD
                         "userHead":userData.userimg_url,
                         "address":"",
                         "tel":""
+=======
+                        "address":"北京XXXXXXX",
+                        "tel":this.state.username
+>>>>>>> 20490b4260716e36988d9afe4abe905a350bc981
                     }))
                 }else {
                     window.localStorage.setItem("user",JSON.stringify({
                         "id":this.state.username,
                         "password":"",
+<<<<<<< HEAD
                         "userHead":userData.userimg_url,
                         "address":"",
                         "tel":""
+=======
+                        "address":"北京XXXXXXX",
+                        "tel":this.state.username
+>>>>>>> 20490b4260716e36988d9afe4abe905a350bc981
                     }))
                 }
                 Action.loadStart()

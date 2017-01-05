@@ -1,7 +1,7 @@
 const options={
         "mouseWheel": true,
-        "scrollbars": false,
-        "click":false,
+        "scrollbars": true,
+        "click":true,
         "probeType":2
 }
 export {options}

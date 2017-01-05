@@ -4,8 +4,8 @@ import {Header,Content,Footer} from "./../../components/common1"
 import ReactIScroll from "react-iscroll";
 import {options} from "./../../config/config"
 import "./../css/myOrder.css"
-var userID=localStorage["userID"];
-var order=localStorage["order"]?JSON.parse(localStorage["order"]):[];
+import OrderList from "./../../components/orderList"
+
 //二级头部模块
 // Pending payment待付款  Pay Now 立即付款  cancel order取消订单
 class Action{
@@ -14,10 +14,8 @@ class Action{
 class SubHeader extends React.Component{
    constructor(props){
         super(props);
-        
     } 
     render(){
-        console.log(this.props)
         return <ul className="subHeader">
             {
                 this.props.data.map((ele,index)=>{
@@ -27,22 +25,48 @@ class SubHeader extends React.Component{
         </ul>
     }
 }
+class OrderC extends React.Component{
+    constructor(props){
+        super(props)
+    }
+    render(){
+        if(this.props.num<=1){
+            return <div>
+                
+            </div>
+        }
+    }
+}
 class MyOrder extends React.Component{
     constructor(props){
         super(props);
-        var totalNum=0;
-        var totalPrice=0
-        for(var i=0;i<order.length;i++){
-            totalNum+=order[i].number*1;
-            totalPrice+=order[i].price*1;
+        var userID=localStorage["userID"];
+        var data=JSON.parse(localStorage.getItem("orderData")||"[]")
+        this.orderData={
+            "0":[],
+            "1":[],
+            "2":[],
+            "3":[],
+            "4":[],
+            "totalNum":0,
+            "totalPrice":0
+        }
+        for(var i=0;i<data.length;i++){
+            this.orderData["0"]=this.orderData["0"].concat(data[i].orderProductData)
+            this.orderData["totalNum"]+=data[i].totalNum*1;
+            this.orderData["totalPrice"]+=data[i].totalPrice*1
+            if(data[i].orderState==1){
+                this.orderData["1"]=this.orderData["1"].concat(data[i].orderProductData)
+            }else if(data[i].orderState==2){
+                this.orderData["2"]=this.orderData["2"].concat(data[i].orderProductData)
+            }else if(data[i].orderState==3){
+                this.orderData["3"]=this.orderData["3"].concat(data[i].orderProductData)
+            }
         }
         var _this=this;
-        console.log(totalNum)
         this.state={
-            "num":0,
-            "data":order?order:[],
-            "totalNum":totalNum,
-            "totalPrice":totalPrice
+            "data":this.orderData,
+            "num":0
         }
         Action.click=function(index){
             _this.setState({
@@ -50,8 +74,25 @@ class MyOrder extends React.Component{
             })
         }
     }
+    cancelOrder(num){
+        localStorage.setItem("orderData","[]");
+        this.orderData[num]=[];
+        this.setState({
+            "data":this.orderData
+        })
+    }
+    payNow(num){
+        console.log(num);
+        var arr=this.orderData[1];
+        this.orderData[1]=[];
+        this.orderData[2]=arr;
+        this.setState({
+            "data":this.orderData
+        })
+    }
     render(){
-        if(order.length<1){
+        var data=this.state.data[this.state.num];
+        if(data.length<1){
             return <div className="page" id="myOrder-page">
                 <Header  title="我的订单" hasback={false}/>
                 <SubHeader data={["全部","待付款","待发货","待收货","待评价"]} num={this.state.num} fn={this.fnClick}/>
@@ -60,38 +101,21 @@ class MyOrder extends React.Component{
                 </Content>
             </div>
         }else{
-            console.log(this.state)
             return <div className="page" id="myOrder-page">
                 <Header  title="我的订单" hasback={false}/>
                 <SubHeader data={["全部","待付款","待发货","待收货","待评价"]} num={this.state.num} />
                 <Content hasFooter={false} hasSubHeader={true}>
                     <ReactIScroll iScroll={IScroll} options={options}>
-                        <div className="orderList">
-                            {
-                                this.state.data.map((ele,index)=>{
-                                    return (
-                                        <div className="iTem" key={index}>
-                                            <div className="imgBox">
-                                                <img src={ele.goodsListImg} alt="" />
-                                            </div>
-                                            <div className="goodsName">
-                                                {ele.goodsName}
-                                            </div>
-                                            <div className="goodsInf">
-                                                <p className="goodsPrice">￥{ele.price}</p>
-                                                <p>*{ele.number}</p>
-                                            </div>
-                                        </div>
-                                    )
-                                })
-                            }
+                        <OrderList data={data}>
                             <div className="total">
-                                <p>共<span className="active">{this.state.totalNum}</span>件 商品实付<span  className="active">￥{this.state.totalPrice.toFixed(1)}</span></p>
+                                <p>共<span className="active">{this.state.data.totalNum}</span>件 商品实付<span  className="active">￥{this.state.data.totalPrice.toFixed(1)}</span></p>
                             </div>
                             <div className="orderBox">
-                                <span>待付款</span><button>立即付款</button><button>取消订单</button>
+                                <span>待付款</span>
+                                <button onClick={()=>this.payNow(this.state.num)}>立即付款</button>
+                                <button onClick={()=>this.cancelOrder(this.state.num)}>取消订单</button>
                             </div>
-                        </div>  
+                        </OrderList>
                     </ReactIScroll>   
                 </Content>
             </div>
