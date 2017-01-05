@@ -3,21 +3,21 @@
         时间：2016-1-3
         描述：
 */
-#reg-page .content {
+#chgpasswd .content {
     padding: 0.32rem;
     background: #f3eff0;
 }
-#reg-page .content .reg-list {
+#chgpasswd .content .feedback-list {
     width: 100%;
     height: 80%;
 }
-#reg-page .content li {
+#chgpasswd .content li {
     width: 100%;
     height: 45px;
     margin-bottom: 16px;
 }
-#reg-page .content .username,
-#reg-page .content .pass {
+#chgpasswd .content .username,
+#chgpasswd .content .pass {
     background: #fff;
     width: 100%;
     height: 100%;
@@ -25,29 +25,29 @@
     padding: 0.2rem;
     font-size: 0.28rem;
 }
-#reg-page .content .tishi {
+#chgpasswd .content .tishi {
     font-size: 0.4rem;
     color: #920300;
     line-height: 45px;
 }
-#reg-page .content .tishi .iconfont {
+#chgpasswd .content .tishi .iconfont {
     font-size: 0.5rem;
     padding: 0 0.3rem;
 }
-#reg-page .content .to-reg {
+#chgpasswd .content .to-save {
     height: 70px;
     padding-top: 40px;
 }
-#reg-page .content .to-reg input {
+#chgpasswd .content .save {
     color: #fff;
     width: 100%;
     height: 45px;
     border-radius: 5px;
     font-size: 0.32rem;
-    background: -webkit-linear-gradient(top, #df3535, #aa0404);
+    background: -webkit-linear-gradient(top, #6eb92b, #2e5d05);
     border: 1px solid #840000;
 }
-#reg-page .loading {
+#chgpasswd .loading {
     height: 100%;
     width: 100%;
     background: rgba(0, 0, 0, 0.3);
@@ -57,7 +57,7 @@
     z-index: 100;
     display: none;
 }
-#reg-page .loading img {
+#chgpasswd .loading img {
     width: 1rem;
     height: 1rem;
     position: absolute;
