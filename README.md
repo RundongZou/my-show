@@ -16,3 +16,5 @@ Content 可以写成
     {children}
 </Content>
 修改的时候修改对应的main 里面的js和css里面的css
+reg 用户名：4-16位数字、字母、下划线和中划线
+    密码：4-16位数字和字母
