@@ -6,6 +6,7 @@
 import React from "react";
 import {Header,Content,Footer} from "./../../components/common1"
 import "./../css/my.css"
+import {Link} from 'react-router'
 class List extends React.Component{
     constructor(props){
         super(props)
@@ -33,19 +34,23 @@ class List extends React.Component{
 class MyContent extends React.Component{
     constructor(props) {
         super(props)
-        var anonymous = window.localStorage.getItem("userID")
+        var anonymous = window.localStorage.getItem("user")?JSON.parse(window.localStorage.getItem("user")):{
+            "id":this.state.username,
+            "password":this.state.password,
+            "address":"",
+            "tel":""
+        }
         if (anonymous) {
-            anonymous = anonymous.split("&&")
             this.state = {
-                anonymous: anonymous[0]
+                "anonymous": anonymous
             }
         }
     }
     render(){
-        var listData = [{"content":"我的订单","path":"/"},
-            {"content":"我的优惠券","path":"/my"},
-            {"content":"浏览记录","path":"/"},
-            {"content":"我的收藏","path":"/"}]
+        var listData = [{"content":"我的订单","path":"#/order/myOrder"},
+            {"content":"我的优惠券","path":"#/my"},
+            {"content":"浏览记录","path":"#/"},
+            {"content":"我的收藏","path":"#/"}]
         return (
             <div className="content-list">
                 <div className="content-top">
@@ -53,8 +58,8 @@ class MyContent extends React.Component{
                         <img src="" alt=""/>
                     </div>
                     <div className="content-right">
-                        <p className="anonymous">匿名 : {this.state.anonymous}</p>
-                        <p>余额 : <span className="balance"></span></p>
+                        <div className="anonymous"><span>昵称 :</span><span className="name">{this.state.anonymous.id}</span></div>
+                        <div>余额 : <span className="balance"></span></div>
                     </div>
                 </div>
                 <List listData={listData}/>
