@@ -15,14 +15,14 @@ class Header extends React.Component{
         return <div className="header">
             <div className="header-btn">{this.props.hasback?<a href={()=>window.history.go(-1)}>{"<"}</a>:""}</div>
             <div className="header-tit">{this.props.title?this.props.title:"首页"}</div>
-            <div className="header-btn">
+            <div className={this.props.hasRightBtn?"header-btn-r header-btn":"header-btn"} >
                 {this.props.hasRightBtn?this.props.hasRightBtn:""}
             </div>
         </div>
     }
 }
 Header.defaultProps={
-    hasback:true
+    hasback:false
 }
 const ACTIVE = { color: 'red' };
 //fooer
@@ -42,7 +42,7 @@ class Footer extends React.Component {
         </ul>
     }
 }
-Footer.defaultProps={data:[{"name":"/","val":"首页","icon":"icon-shouye"},{"name":"/classs","val":"分类","icon":"icon-fenlei"},{"name":"/carList","val":"购物车","icon":"icon-gouwuche"},{"name":"/my","val":"我的","icon":"icon-my"},{"name":"/more","val":"更多","icon":"icon-gengduo"}]}
+Footer.defaultProps={data:[{"name":"/","val":"首页","icon":"icon-shouye"},{"name":"/list","val":"分类","icon":"icon-fenlei"},{"name":"/carList","val":"购物车","icon":"icon-gouwuche"},{"name":"/my","val":"我的","icon":"icon-my"},{"name":"/more","val":"更多","icon":"icon-gengduo"}]}
 //content
 class Content extends React.Component {
     constructor(...args) {
