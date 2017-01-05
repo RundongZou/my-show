@@ -4,7 +4,7 @@
 
 let Tools = {
 	getUserID:function(){
-		let id = window.sessionStorage.getItem("userID") || window.localStorage.getItem("userID");
+		let id =JSON.parse(window.sessionStorage.getItem("user")||"{}").id || JSON.parse(window.localStorage.getItem("user")||"{}").id;
 		if(!id){
 			window.location.hash = "#/login"
 		}
