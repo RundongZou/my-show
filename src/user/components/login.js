@@ -6,12 +6,15 @@
 
 import "./../css/login.css"
 import React from "react";
+let Action={
 
+}
 import {Header,Content,Footer} from "./../../components/common1"
 class Tip extends React.Component{
     render(){
+        var display = this.props.loading?"block":"none";
         return (
-            <div className="loading">登录成功</div>
+            <div className="loading" style={{"display":display}}><div className="loading"><img src="./img/loading.gif"/></div></div>
         )
     }
 }
@@ -64,12 +67,30 @@ class Loginlist extends React.Component{
                     tip:"用户不存在"
                 })
             }else{
+                var userData=JSON.parse(data)
+                console.log(userData)
                 if(this.state.rememberPassword){
-                    window.localStorage.setItem("userID",this.state.username+"&&"+this.state.password)
+                    window.localStorage.setItem("user",JSON.stringify({
+                        "id":this.state.username,
+                        "password":this.state.password,
+                        "userHead":userData.userimg_url,
+                        "address":"",
+                        "tel":""
+                    }))
                 }else {
-                    window.localStorage.setItem("userID",this.state.username)
+                    window.localStorage.setItem("user",JSON.stringify({
+                        "id":this.state.username,
+                        "password":"",
+                        "userHead":userData.userimg_url,
+                        "address":"",
+                        "tel":""
+                    }))
                 }
-                window.location = "/"
+                Action.loadStart()
+                setTimeout(()=>{
+                    window.location = "/"
+                    Action.loadEnd()
+                },2000)
             }
         })
     }
@@ -90,7 +111,7 @@ class Loginlist extends React.Component{
                         <input type="checkbox" onClick={()=>this.changeShowPassword()} />
                         <span>显示密码</span>
                     </label>
-                    <a className="forget">忘记密码?</a>
+                    <a href={"/#/my/chgpassWd"} className="forget">忘记密码?</a>
                 </li>
                 <li className="check-item">
                     <label>
@@ -111,15 +132,31 @@ class Loginlist extends React.Component{
     }
 }
 class Login extends React.Component{
+    constructor(props){
+        super(props)
+        this.state={
+            loading:false
+        }
+        Action.loadStart=()=>{
+            this.setState({
+                loading:true
+            })
+        }
+        Action.loadEnd=()=>{
+            this.setState({
+                loading:false
+            })
+        }
+    }
     render(){
         return (
             <div className="login-page" id="login-page">
                 <Header title={"开心摇一摇用户登录"} />
                 <Content hasFooter={true}>
-                    <Loginlist/>
+                    <Loginlist />
                 </Content>
                 <Footer hasFooter={true}/>
-                <Tip/>
+                <Tip loading={this.state.loading}/>
             </div>
         )
     }

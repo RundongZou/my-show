@@ -33,11 +33,16 @@ class List extends React.Component{
 class MyContent extends React.Component{
     constructor(props) {
         super(props)
-        var anonymous = window.localStorage.getItem("userID")
+        var anonymous = JSON.parse(window.localStorage.getItem("user"))
         if (anonymous) {
-            anonymous = anonymous.split("&&")
-            this.state = {
-                anonymous: anonymous[0]
+            this.state={
+                anonymous:anonymous.id,
+                userHead:anonymous.userHead
+            }
+        }else {
+            this.state={
+                anonymous:"未知",
+                userHead:""
             }
         }
     }
@@ -50,11 +55,11 @@ class MyContent extends React.Component{
             <div className="content-list">
                 <div className="content-top">
                     <div className="content-left">
-                        <img src="" alt=""/>
+                        <img src={this.state.userHead} alt=""/>
                     </div>
                     <div className="content-right">
                         <p className="anonymous">匿名 : {this.state.anonymous}</p>
-                        <p>余额 : <span className="balance"></span></p>
+                        <p>余额 : <span className="balance">0</span></p>
                     </div>
                 </div>
                 <List listData={listData}/>
