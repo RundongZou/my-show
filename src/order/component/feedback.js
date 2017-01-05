@@ -37,7 +37,7 @@ class Feedback extends React.Component{
     render(){
         return (
             <div className="feedback-page" id="feedback">
-                <Header title={"修改密码"} />
+                <Header title={"意见反馈"} />
                 <Content>
                     <Feedbacklist/>
                 </Content>

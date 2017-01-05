@@ -18,6 +18,8 @@ import My from "./../user/components/my"
 import CarList from "./../order/component/carList"
 import More from "./../order/component/more"
 import MyOrder from "./../order/component/myOrder"
+import ChgpassWd from "./../order/component/chgpasswd"
+import Feedback from "./../order/component/feedback"
 class Page extends React.Component{
     constructor(props){
         super(props)
@@ -40,6 +42,8 @@ ReactDOM.render((
             <Route path="/more" component={More}/>
             <Route path="/my/login" component={Login}/>
             <Route path="/my/reg" component={Reg}/>
+            <Route path="/my/chgpassWd" component={ChgpassWd}/>
+            <Route path="/my/feedback" component={Feedback}/>
             <Route path="/order/myOrder" component={MyOrder}/>
     </Router>
 
