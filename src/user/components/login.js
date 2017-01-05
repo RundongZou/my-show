@@ -65,9 +65,19 @@ class Loginlist extends React.Component{
                 })
             }else{
                 if(this.state.rememberPassword){
-                    window.localStorage.setItem("userID",this.state.username+"&&"+this.state.password)
+                    window.localStorage.setItem("user",JSON.stringify({
+                        "id":this.state.username,
+                        "password":this.state.password,
+                        "address":"北京XXXXXXX",
+                        "tel":this.state.username
+                    }))
                 }else {
-                    window.localStorage.setItem("userID",this.state.username)
+                    window.localStorage.setItem("user",JSON.stringify({
+                        "id":this.state.username,
+                        "password":"",
+                        "address":"北京XXXXXXX",
+                        "tel":this.state.username
+                    }))
                 }
                 window.location = "/"
             }

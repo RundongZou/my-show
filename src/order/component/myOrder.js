@@ -4,6 +4,7 @@ import {Header,Content,Footer} from "./../../components/common1"
 import ReactIScroll from "react-iscroll";
 import {options} from "./../../config/config"
 import "./../css/myOrder.css"
+import OrderList from "./../../components/orderList"
 var userID=localStorage["userID"];
 var order=localStorage["order"]?JSON.parse(localStorage["order"]):[];
 //二级头部模块
@@ -66,32 +67,14 @@ class MyOrder extends React.Component{
                 <SubHeader data={["全部","待付款","待发货","待收货","待评价"]} num={this.state.num} />
                 <Content hasFooter={false} hasSubHeader={true}>
                     <ReactIScroll iScroll={IScroll} options={options}>
-                        <div className="orderList">
-                            {
-                                this.state.data.map((ele,index)=>{
-                                    return (
-                                        <div className="iTem" key={index}>
-                                            <div className="imgBox">
-                                                <img src={ele.goodsListImg} alt="" />
-                                            </div>
-                                            <div className="goodsName">
-                                                {ele.goodsName}
-                                            </div>
-                                            <div className="goodsInf">
-                                                <p className="goodsPrice">￥{ele.price}</p>
-                                                <p>*{ele.number}</p>
-                                            </div>
-                                        </div>
-                                    )
-                                })
-                            }
+                        <OrderList data={order}>
                             <div className="total">
                                 <p>共<span className="active">{this.state.totalNum}</span>件 商品实付<span  className="active">￥{this.state.totalPrice.toFixed(1)}</span></p>
                             </div>
                             <div className="orderBox">
                                 <span>待付款</span><button>立即付款</button><button>取消订单</button>
                             </div>
-                        </div>  
+                        </OrderList>
                     </ReactIScroll>   
                 </Content>
             </div>

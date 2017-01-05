@@ -3,7 +3,7 @@ import {Header,Content,Footer} from "./../../components/common1"
 import "./../css/carList.css"
 import ReactIScroll from "react-iscroll";
 import {options} from "./../../config/config"
-var userID=localStorage["userID"];
+var userID=localStorage.getItem("user")?JSON.parse(localStorage.getItem("user")).id:""
 class Action{
     
 }
@@ -66,8 +66,8 @@ class CarList extends React.Component{
         })
     }
     toOrder(){
-        localStorage.setItem("order",JSON.stringify(this.state.carListData));
-        window.location.href="#/order/myOrder"
+        localStorage.setItem("carListData",JSON.stringify(this.state.carListData));
+        window.location.hash="/order/myOrder"
     }
     render(){
         if(userID){
