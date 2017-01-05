@@ -34,8 +34,8 @@ class More extends React.Component{
         super(props)
     }
     render(){
-        var moreList =[{"content":"修改密码","path":"/"},
-            {"content":"用户反馈","path":"/my"},
+        var moreList =[{"content":"修改密码","path":"#/my/chgpassWd"},
+            {"content":"用户反馈","path":"#/my/feedback"},
             {"content":"关于","path":"/"}]
         return <div className="page" id="more">
             <Header hasback={false} title="更多"/>
