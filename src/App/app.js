@@ -14,6 +14,8 @@ import My from "./../user/components/my"
 //order
 import CarList from "./../order/component/carList"
 import More from "./../order/component/more"
+import ChgpassWd from "./../order/component/chgpasswd"
+import Feedback from "./../order/component/feedback"
 class Page extends React.Component{
     constructor(props){
         super(props)
@@ -28,13 +30,15 @@ class Page extends React.Component{
 }
 ReactDOM.render((
     <Router history={hashHistory}>
-            <Route path="/" component={IndexPage} />
-            <Route path="/classs" component={ListPage} />
-            <Route path="/carList" component={CarList}/>
-            <Route path="/my" component={My}/>
-            <Route path="/more" component={More}/>
-            <Route path="/my/login" component={Login}/>
-            <Route path="/my/reg" component={Reg}/>
+        <Route path="/" component={IndexPage} />
+        <Route path="/classs" component={ListPage} />
+        <Route path="/carList" component={CarList}/>
+        <Route path="/my" component={My}/>
+        <Route path="/more" component={More}/>
+        <Route path="/my/login" component={Login}/>
+        <Route path="/my/reg" component={Reg}/>
+        <Route path="/more/chgpasswd" component={ChgpassWd}/>
+        <Route path="/more/feedback" component={Feedback}/>
     </Router>
 
 ), document.getElementById("root"));

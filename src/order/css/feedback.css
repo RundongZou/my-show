@@ -3,51 +3,52 @@
         时间：2016-1-3
         描述：
 */
-#reg-page .content {
+#feedback{
+    font-size: 0.32rem;
+}
+#feedback .content {
     padding: 0.32rem;
     background: #f3eff0;
 }
-#reg-page .content .reg-list {
+#feedback .content .feedback-list {
     width: 100%;
     height: 80%;
 }
-#reg-page .content li {
+#feedback .content li {
     width: 100%;
     height: 45px;
     margin-bottom: 16px;
 }
-#reg-page .content .username,
-#reg-page .content .pass {
-    background: #fff;
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
-    padding: 0.2rem;
-    font-size: 0.28rem;
+#feedback .content .feedback-content{
+    height: 220px;
+    border: 1px solid #e6e6e6;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 10px;
+    overflow: hidden;
 }
-#reg-page .content .tishi {
+#feedback .content .tishi {
     font-size: 0.4rem;
     color: #920300;
     line-height: 45px;
 }
-#reg-page .content .tishi .iconfont {
+#feedback .content .tishi .iconfont {
     font-size: 0.5rem;
     padding: 0 0.3rem;
 }
-#reg-page .content .to-reg {
+#feedback .content .to-submit {
     height: 70px;
     padding-top: 40px;
 }
-#reg-page .content .to-reg input {
+#feedback .content .submit {
     color: #fff;
     width: 100%;
     height: 45px;
     border-radius: 5px;
-    font-size: 0.32rem;
-    background: -webkit-linear-gradient(top, #df3535, #aa0404);
+    background: -webkit-linear-gradient(top, #6eb92b, #3b720a);
     border: 1px solid #840000;
 }
-#reg-page .loading {
+#feedback .loading {
     height: 100%;
     width: 100%;
     background: rgba(0, 0, 0, 0.3);
@@ -57,7 +58,7 @@
     z-index: 100;
     display: none;
 }
-#reg-page .loading img {
+#feedback .loading img {
     width: 1rem;
     height: 1rem;
     position: absolute;
