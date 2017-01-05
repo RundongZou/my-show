@@ -3,8 +3,9 @@ import {Header,Content,Footer} from "./../../components/common1"
 import "./../css/carList.css"
 import ReactIScroll from "react-iscroll";
 import {options} from "./../../config/config"
+var userID=localStorage["userID"];
 class Action{
-
+    
 }
 //二级头部模块
 class SubHeader extends React.Component{
@@ -30,7 +31,7 @@ class CarList extends React.Component{
     changeQua(index,id,num){
         var _this=this;
          var data={
-                "userID":18535677667,
+                "userID":userID,
                 "goodsID":id,
                 "number":num
          }
@@ -38,7 +39,6 @@ class CarList extends React.Component{
          this.Timer=setTimeout(function(){
             $.get("http://datainfo.duapp.com/shopdata/updatecar.php",data,(data)=>{
                     console.log(data);
-                    console.log(_this.getData)
                     _this.getData();
                 })
             },600)
@@ -47,58 +47,74 @@ class CarList extends React.Component{
         this.getData()
     }
     getData(){
-        $.getJSON("http://datainfo.duapp.com/shopdata/getCar.php?userID=18535677667&callback=?",(data)=>{
-            console.log(data)
+        $.getJSON("http://datainfo.duapp.com/shopdata/getCar.php?userID="+userID+"&callback=?",(data)=>{
             var quality=0;
             var totalPrice=0;
             for(var i=0;i<data.length;i++){
                 quality+=parseInt(data[i].number);
                 totalPrice+=parseInt(data[i].number)*parseInt(data[i].price)
             }
+            if(!data){
+                data=[]
+            }
             this.setState({
                 "carListData":data,
                 "quality":quality,
                 "totalPrice":totalPrice
             })
-            console.log(this.state)
+            console.log(data)
         })
     }
-    componentWillUpdate(){
-        console.log("更新")
+    toOrder(){
+        localStorage.setItem("order",JSON.stringify(this.state.carListData));
+        window.location.href="#/order/myOrder"
     }
     render(){
-        return <div className="page" id="carList">
-            <Header hasRightBtn={"结算"} title="购物车" hasback={false}/>
-            <SubHeader quality={this.state.quality} totalPrice={this.state.totalPrice}/>
-            <Content hasFooter={true} hasSubHeader={true}>
-                <ReactIScroll iScroll={IScroll} options={options}>
-                    <ul className="ShopList">
-                        {
-                        this.state.carListData.map((ele,index)=>{
-                                return (
-                                    <li key={index}>
-                                        <div className="imgBox">
-                                            <img src={ele.goodsListImg} alt=""  />
-                                        </div>
-                                        <div className="goodsBox">
-                                            <p className="goodsName">{ele.goodsName}</p>
-                                            <p className="price">￥{ele.price}</p>
-                                            <p className="number">数量:
-                                                <button className="btn sub" onClick={(index)=>{this.changeQua(index,ele.goodsID,parseInt(ele.number)-1)}}>-</button>
-                                                <input type="text" name=""  defaultValue={ele.number} />
-                                                <button className="btn add" onClick={()=>{}}>+</button>
-                                            </p>
-                                            <button className="btn del" onClick={()=>{}}>x</button>
-                                        </div>
-                                    </li>
-                                )
-                            })
-                        }
-                    </ul>
-                </ReactIScroll>
-            </Content>
-            <Footer hasFooter={true}/>
-        </div>
+        if(userID){
+            return <div className="page" id="carList">
+                <Header hasRightBtn={<a onClick={()=>{this.toOrder()}}>结算</a>} title="购物车" hasback={false}/>
+                <SubHeader quality={this.state.quality} totalPrice={this.state.totalPrice}/>
+                <Content hasFooter={true} hasSubHeader={true}>
+                    
+                    <ReactIScroll iScroll={IScroll} options={options}>
+                        <ul className="ShopList">
+                            {
+                            this.state.carListData.map((ele,index)=>{
+                                    return (
+                                        <li key={index}>
+                                            <div className="imgBox">
+                                                <img src={ele.goodsListImg} alt=""  />
+                                            </div>
+                                            <div className="goodsBox">
+                                                <p className="goodsName">{ele.goodsName}</p>
+                                                <p className="price">￥{ele.price}</p>
+                                                <p className="number">数量:
+                                                    <button className="btn sub" onClick={()=>{this.changeQua(index,ele.goodsID,parseInt(ele.number)-1)}}>-</button>
+                                                    <input type="text" name=""  value={ele.number} readOnly/>
+                                                    <button className="btn add" onClick={()=>{this.changeQua(index,ele.goodsID,parseInt(ele.number)+1)}}>+</button>
+                                                </p>
+                                                <button className="btn del" onClick={()=>{this.changeQua(index,ele.goodsID,0)}}>x</button>
+                                            </div>
+                                        </li>
+                                    )
+                                })
+                            }
+                        </ul>
+                    </ReactIScroll>
+                </Content>
+                <Footer hasFooter={true}/>
+            </div>
+        }else{
+            return <div className="page" id="carList">
+                        <Header hasRightBtn={"结算"} title="购物车" hasback={false}/>
+                        <SubHeader />
+                        <Content hasFooter={true} hasSubHeader={true}>
+                            <p className="pleaseLogin">请登录</p>
+                        </Content>
+                        <Footer hasFooter={true}/>
+                </div>
+        }
+        
     }
 }
 

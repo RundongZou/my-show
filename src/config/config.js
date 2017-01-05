@@ -1,6 +1,6 @@
 const options={
         "mouseWheel": true,
-        "scrollbars": true,
+        "scrollbars": false,
         "click":false,
         "probeType":2
 }
