@@ -46,5 +46,4 @@ ReactDOM.render((
             <Route path="/my/feedback" component={Feedback}/>
             <Route path="/order/myOrder" component={MyOrder}/>
     </Router>
-
 ), document.getElementById("root"));

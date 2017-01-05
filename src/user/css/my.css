@@ -33,13 +33,19 @@
 }
 #my .content-right{
     height: 100%;
-    width: 3rem;
+    width: 3.55rem;
     float: left;
     padding: 0 0.3rem;
 }
-#my p{
+#my .content-right div{
     height: 50%;
+
     line-height: 1.1rem;
+}
+#my .content-right div span{
+    width: 1rem;
+    float: left;
+    display: inline
 }
 #my .balance{
     color: #f20002;

@@ -53,8 +53,8 @@ class MyContent extends React.Component{
                         <img src="" alt=""/>
                     </div>
                     <div className="content-right">
-                        <p className="anonymous">匿名 : {this.state.anonymous}</p>
-                        <p>余额 : <span className="balance"></span></p>
+                        <div className="anonymous"><span>昵称 :</span><span className="name">{this.state.anonymous}</span></div>
+                        <div>余额 : <span className="balance"></span></div>
                     </div>
                 </div>
                 <List listData={listData}/>
