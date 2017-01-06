@@ -47,10 +47,10 @@ class MyContent extends React.Component{
         }
     }
     render(){
-        var listData = [{"content":"我的订单","path":"/"},
-            {"content":"我的优惠券","path":"/my"},
-            {"content":"浏览记录","path":"/"},
-            {"content":"我的收藏","path":"/"}]
+        var listData = [{"content":"我的订单","path":"#/order/myOrder"},
+            {"content":"我的优惠券","path":"#/my"},
+            {"content":"浏览记录","path":"#/"},
+            {"content":"我的收藏","path":"#/"}]
         return (
             <div className="content-list">
                 <div className="content-top">

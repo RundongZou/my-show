@@ -367,6 +367,7 @@ html {
 
 /*底部*/
 .footer {
+	z-index: 1;
   top: auto;
   bottom: 0;
   height: 50px;
