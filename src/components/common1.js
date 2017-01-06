@@ -1,5 +1,6 @@
 import React from "react";
 import { Router, Route, IndexRoute, Link, IndexLink,hashHistory } from 'react-router'
+import "./commom1.css"
 /**
  * 
  * 
@@ -36,7 +37,7 @@ class Footer extends React.Component {
         return <ul className="footer" style={hasFooter}>
             {
                 this.props.data.map((ele,index)=>
-                <li key={index} className={this.props.active==index?"active":""} ><span className={"icon iconfont "+ele.icon}></span><Link to={ele.name} activeStyle={ACTIVE}>{ele.val}</Link></li>
+                <li key={index} className={this.props.active==index?"active":""} ><Link to={ele.name} activeStyle={ACTIVE}><span className={"icon iconfont "+ele.icon}></span>{ele.val}</Link></li>
                 )
             }
         </ul>
