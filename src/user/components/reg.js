@@ -35,7 +35,7 @@ class Reglist extends React.Component{
             regusername:false
         })
         var reg=new RegExp()
-        reg = /^[A-Za-z0-9]{4,16}$/g;
+        reg = /^[A-Za-z0-9_-]{4,16}$/g;
         if(reg.test(e.target.value)){
             this.setState({
                 regusername:true
