@@ -16,7 +16,7 @@
 }
 #my .content-top{
     height: 2.2rem;
-    margin-bottom: 1.6rem;
+    margin-bottom: 1.2rem;
 }
 #my .content-left{
     height: 100%;
@@ -37,12 +37,11 @@
     float: left;
     padding: 0 0.3rem;
 }
-#my .content-right div{
+#my .content-right p{
     height: 50%;
-
     line-height: 1.1rem;
 }
-#my .content-right div span{
+#my .content-right span{
     width: 1rem;
     float: left;
     display: inline

@@ -11,21 +11,34 @@ class Feedbacklist extends React.Component{
     constructor(props){
         super(props)
         this.state={
+            content:"",
             password:"",
             password1:"",
             username:"",
+            tip:""
         }
     }
-
+    changeContent(e){
+        this.setState({
+            content:e.target.value
+        })
+        console.log(this.state.content)
+    }
+    save(){
+        this.setState({
+            content:"",
+            tip:"保存成功"
+        })
+    }
     render(){
         return (
             <ul className="feedback-list">
                 <li className="feedback-content">
-                    <textarea name="" id="" cols="30" rows="8"></textarea>
+                    <textarea name="" id="" cols="50" rows="12" value={this.props.content} onChange={(e)=>this.changeContent(e)}></textarea>
                 </li>
-                <li className="tishi"></li>
+                <li className="tishi">{this.state.tip}</li>
                 <li  className="to-submit">
-                    <input className="submit" type="button" value="保存"  />
+                    <input className="submit" type="button" value="保存" onClick={()=>this.save()} />
                 </li>
             </ul>
         )

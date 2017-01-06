@@ -4,32 +4,25 @@ import ReactDOM from "react-dom";
 import ReactIScroll from "react-iscroll";
 import {Header,Footer} from "./../../components/common1"
 //自定义组件
-import {Sub_header, Content,Loading } from "./../components/list_common";
+import {Content,Sub_header, Loading } from "./../components/list_common";
 import Pro_list from "./../components/pro_list";
 import {scroll_options} from "./../config/config";
-
+// 引入样式
 require("../css/common.css");
-require("../css/list.css");
+require("../css/index.css");
 
 //console.log(ReactIScroll)
 
-// 商品分类列表
-class Class_list extends Component {
+// banner
+class Banner extends Component {
 	constructor (props) {
-		super(props);
-	}
-	handle_click (id) {
-		this.props.change_classID(id);
+		super(props)
 	}
 	render () {
 		return (
-			<ul className="class_list">
-				{
-					this.props.class_data.map((ele, ind) => <li onClick={() => this.handle_click(ele.classID)} key={ind}>{ele.className}</li>)
-				}
-			</ul>
+			<div className="banner">{this.props.children}</div>
 		)
-	}
+	}		
 }
 
 // 最外面的主体
@@ -38,7 +31,8 @@ class Index_page extends Component {
 		super(props);
 		this.state = {
 			class_data: [],
-			product_data: []
+			product_data: [],
+			banner_list: []
 		}
 		
 		// 设置默认的数据请求选项
@@ -63,6 +57,28 @@ class Index_page extends Component {
 		}, "json")
 		// 请求商品数据
 		this.get_product_data(this.pageCode)	
+		
+		// banner获取数据
+		$.getJSON("http://datainfo.duapp.com/shopdata/getBanner.php?callback=?", (data) => {
+			let a= JSON.parse(data[1].goodsBenUrl)
+			console.log(data.length);
+			var arr = [];
+			for (let i = 0; i < data.length; i++) {
+				let a= JSON.parse(data[i].goodsBenUrl)
+				arr.push(a[0])
+			}
+			//console.log(arr);
+			this.setState({
+				banner_list: arr
+			})
+		})
+		
+		$.getJSON("http://datainfo.duapp.com/shopdata/getuser.php?callback=?", {
+			userID: "zourundong"
+		}, (data) => {
+			console.log(data);
+		})
+	
 	}
 	
 	change_classID (id) {
@@ -117,25 +133,52 @@ class Index_page extends Component {
 	render () {
 		return (
 			<div className="page" id="list_page">
-				<Header title="首页" hasback={false} />		
+				<Header title="走秀网" hasback={false} />	
+				<Sub_header>
+					<input className="search" type="text" placeholder="寂寞空虚的骚男" />
+				</Sub_header>
+				<Banner>
+					<div className="swiper-container" ref="swiperContainer">
+    					<div className="swiper-wrapper">
+    						{
+    							this.state.banner_list.map((ele, ind) => <div className="swiper-slide" key={ind}><img src={ele} /></div>)
+    						}
+    					</div>
+    					<div className="swiper-pagination" ref="pagination"></div>
+    				</div>  				
+				</Banner>
+			
 				<Footer hasFooter={true}/>
 			</div>
-		)
+		)	
+		
 	}
+	componentDidMount(){
+			this.swiper = new Swiper(this.refs.swiperContainer,{
+				pagination:this.refs.pagination,
+	       		autoplay: 2000,
+	       		autoplayDisableOnInteraction: false,
+				effect: 'coverflow',
+				grabCursor: true,
+		        centeredSlides: true,
+		        slidesPerView: 'auto',
+		        coverflow: {
+		            rotate: 60,
+		            stretch: 0,
+		            depth: 300,
+		            modifier: 1,
+		            slideShadows : true
+		        }
+			})
+
+		}
+		componentDidUpdate(){
+			this.swiper.update();
+			this.swiper.reLoop();
+		}
 }
 
 $("body document").append($("#loading"));
 
 
 export {Index_page};
-
-//var x = 1;
-//function fn1() {
-//	//var x = 3;
-//	console.log(x)
-//}
-//function fn2() {
-//	var x = 2;
-//	fn1()
-//}
-//fn2()

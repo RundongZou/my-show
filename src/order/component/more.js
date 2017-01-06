@@ -10,6 +10,10 @@ class Morelist extends React.Component{
     constructor(props){
         super(props)
     }
+    exit(){
+        window.localStorage.removeItem("user")
+        window.location = "/#/my/login"
+    }
     render(){
         return (
             <ul className="more-list">
@@ -25,6 +29,9 @@ class Morelist extends React.Component{
                         )
                     })
                 }
+                <li className="list" onClick={()=>this.exit()}>
+                    <span className="list-left">退出账号</span>
+                </li>
             </ul>
         )
     }
@@ -34,9 +41,9 @@ class More extends React.Component{
         super(props)
     }
     render(){
-        var moreList =[{"content":"修改密码","path":"#/my/chgpassWd"},
-            {"content":"用户反馈","path":"#/my/feedback"},
-            {"content":"关于","path":"/"}]
+        var moreList =[{"content":"修改密码","path":"/#/my/chgpassWd"},
+            {"content":"用户反馈","path":"/#/my/feedback"},
+            {"content":"关于","path":"javascript:void(0);"}]
         return <div className="page" id="more">
             <Header hasback={false} title="更多"/>
             <Content hasFooter={true}>

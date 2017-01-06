@@ -28,6 +28,7 @@ class Detail_page extends Component{
     		buy_number: "",
     		goodsID: this.props.params.goodsID
     	}
+		this.userId=JSON.parse(localStorage.getItem("user")||"{}").id;
     	$.getJSON("http://datainfo.duapp.com/shopdata/getGoods.php?callback=?", {
 	    	goodsID: this.props.params.goodsID
 	    }, (data) => {
@@ -43,8 +44,9 @@ class Detail_page extends Component{
     add_to_cart () {
     	// 添加到购物车
     	var user_id = Tools.getUserID();
+		
     	user_id && $.get("http://datainfo.duapp.com/shopdata/updatecar.php", {
-    		userID: "zourundong",
+    		userID: user_id,
     		goodsID: this.state.goodsID,
     		buy_number: 1
     	}, function (data) {
@@ -94,8 +96,17 @@ class Detail_page extends Component{
     componentDidMount(){
 		this.swiper = new Swiper(this.refs.swiperContainer,{
 			pagination:this.refs.pagination,
-			slidesPerView:'3',
-			loop:true
+			loop:true,
+			effect: 'cube',
+			cube: {
+	            shadow: true,
+	            slideShadows: true,
+	            shadowOffset: 20,
+	            shadowScale: 0.94
+	      },
+	       paginationClickable: true,
+	       autoplayDisableOnInteraction: false,
+	       centeredSlides: true,
 		})
 	}
 	componentDidUpdate(){

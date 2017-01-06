@@ -6,10 +6,14 @@
 import React from "react";
 import {Header,Content,Footer} from "./../../components/common1"
 import "./../css/my.css"
-import {Link} from 'react-router'
+import Login from "./login"
+
+
+
 class List extends React.Component{
     constructor(props){
-        super(props)
+        super(props);
+        
     }
     render(){
         return (
@@ -34,15 +38,16 @@ class List extends React.Component{
 class MyContent extends React.Component{
     constructor(props) {
         super(props)
-        var anonymous = window.localStorage.getItem("user")?JSON.parse(window.localStorage.getItem("user")):{
-            "id":this.state.username,
-            "password":this.state.password,
-            "address":"",
-            "tel":""
-        }
+        var anonymous = JSON.parse(window.localStorage.getItem("user"))
         if (anonymous) {
-            this.state = {
-                "anonymous": anonymous
+            this.state={
+                anonymous:anonymous.id,
+                userHead:anonymous.userHead
+            }
+        }else {
+            this.state={
+                anonymous:"未知",
+                userHead:""
             }
         }
     }
@@ -55,11 +60,11 @@ class MyContent extends React.Component{
             <div className="content-list">
                 <div className="content-top">
                     <div className="content-left">
-                        <img src="" alt=""/>
+                        <img src={this.state.userHead} alt=""/>
                     </div>
                     <div className="content-right">
-                        <div className="anonymous"><span>昵称 :</span><span className="name">{this.state.anonymous.id}</span></div>
-                        <div>余额 : <span className="balance"></span></div>
+                        <p className="anonymous">匿名 : {this.state.anonymous}</p>
+                        <p>余额 : <span className="balance">0</span></p>
                     </div>
                 </div>
                 <List listData={listData}/>
@@ -71,15 +76,21 @@ class MyContent extends React.Component{
 class My extends React.Component{
     constructor(props){
         super(props)
+        this.userID=JSON.parse(localStorage.getItem("user")||"{}").id;
     }
     render(){
-        return <div className="page" id="my">
-            <Header hasRightBtn={"充值"} title="我的秀"/>
-            <Content hasFooter={true}>
-                <MyContent/>
-            </Content>
-            <Footer hasFooter={true}/>
-        </div>
+        if(this.userID){
+            return <div className="page" id="my">
+                <Header hasRightBtn={"充值"} title="我的秀"/>
+                <Content hasFooter={true}>
+                    <MyContent/>
+                </Content>
+                <Footer hasFooter={true}/>
+            </div>
+        }else{
+            return <Login />
+        }
+        
     }
 }
 export default My;

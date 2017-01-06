@@ -17,7 +17,6 @@ class Comfirm extends React.Component{
         }
     }
     hasInvoices(){
-        console.log(this.state.invoices)
         this.setState({
             "invoices":!this.state.invoices
         })
@@ -32,13 +31,11 @@ class Comfirm extends React.Component{
             orderProductData:data.data
         }
         var arrData=JSON.parse(localStorage.getItem("orderData")||"[]");
-        console.log(arrData)
         arrData.push(orderData);
         localStorage.setItem("orderData",JSON.stringify(arrData));
         window.location.hash="/order/myOrder"
     }
     render(){
-        console.log(this.state.data)
         return <div className="page" id="confirm-page">
             <Header title="确认订单"/>
             <Content hasFooter={true}>

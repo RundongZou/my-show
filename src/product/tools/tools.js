@@ -4,9 +4,9 @@
 
 let Tools = {
 	getUserID:function(){
-		let id =JSON.parse(window.sessionStorage.getItem("user")||"{}").id || JSON.parse(window.localStorage.getItem("user")||"{}").id;
+		let id = JSON.parse(window.sessionStorage.getItem("user")||"{}").id || JSON.parse(window.localStorage.getItem("user")||"{}").id;
 		if(!id){
-			window.location.hash = "#/login"
+			window.location.hash = "#/my/login"
 		}
 		return id
 	}
