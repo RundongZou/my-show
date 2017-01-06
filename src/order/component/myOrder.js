@@ -41,7 +41,7 @@ class MyOrder extends React.Component{
     constructor(props){
         super(props);
         var userID=localStorage["userID"];
-        var data=JSON.parse(localStorage.getItem("orderData")||"[]")
+        this.data=JSON.parse(localStorage.getItem("orderData")||"[]")
         this.orderData={
             "0":[],
             "1":[],
@@ -51,16 +51,18 @@ class MyOrder extends React.Component{
             "totalNum":0,
             "totalPrice":0
         }
-        for(var i=0;i<data.length;i++){
-            this.orderData["0"]=this.orderData["0"].concat(data[i].orderProductData)
-            this.orderData["totalNum"]+=data[i].totalNum*1;
-            this.orderData["totalPrice"]+=data[i].totalPrice*1
-            if(data[i].orderState==1){
-                this.orderData["1"]=this.orderData["1"].concat(data[i].orderProductData)
-            }else if(data[i].orderState==2){
-                this.orderData["2"]=this.orderData["2"].concat(data[i].orderProductData)
-            }else if(data[i].orderState==3){
-                this.orderData["3"]=this.orderData["3"].concat(data[i].orderProductData)
+        for(var i=0;i<this.data.length;i++){
+            this.orderData["0"]=this.orderData["0"].concat(this.data[i].orderProductData)
+            this.orderData["totalNum"]+=this.data[i].totalNum*1;
+            this.orderData["totalPrice"]+=this.data[i].totalPrice*1
+            if(this.data[i].orderState==1){
+                this.orderData["1"]=this.orderData["1"].concat(this.data[i].orderProductData)
+            }else if(this.data[i].orderState==2){
+                this.orderData["2"]=this.orderData["2"].concat(this.data[i].orderProductData)
+            }else if(this.data[i].orderState==3){
+                this.orderData["3"]=this.orderData["3"].concat(this.data[i].orderProductData)
+            }else if(this.data[i].orderState==4){
+                this.orderData["4"]=this.orderData["4"].concat(this.data[i].orderProductData)
             }
         }
         var _this=this;
@@ -86,6 +88,10 @@ class MyOrder extends React.Component{
         var arr=this.orderData[1];
         this.orderData[1]=[];
         this.orderData[2]=arr;
+        for(var i=0;i<this.data.length;i++){
+            this.data[i].orderState=2;
+        }
+        localStorage.setItem("orderData",JSON.stringify(this.data))
         this.setState({
             "data":this.orderData
         })
