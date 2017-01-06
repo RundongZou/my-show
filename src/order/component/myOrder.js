@@ -30,7 +30,8 @@ class OrderC extends React.Component{
         super(props)
     }
     render(){
-            if(this.props.num>1){
+            console.log(this.props.num==1)
+            if(!this.props.num==1){
                 return <div></div>
             }else{
                 return <div>

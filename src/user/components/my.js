@@ -6,9 +6,14 @@
 import React from "react";
 import {Header,Content,Footer} from "./../../components/common1"
 import "./../css/my.css"
+import Login from "./login"
+
+
+
 class List extends React.Component{
     constructor(props){
-        super(props)
+        super(props);
+        
     }
     render(){
         return (
@@ -71,15 +76,21 @@ class MyContent extends React.Component{
 class My extends React.Component{
     constructor(props){
         super(props)
+        this.userID=JSON.parse(localStorage.getItem("user")||"{}").id;
     }
     render(){
-        return <div className="page" id="my">
-            <Header hasRightBtn={"充值"} title="我的秀"/>
-            <Content hasFooter={true}>
-                <MyContent/>
-            </Content>
-            <Footer hasFooter={true}/>
-        </div>
+        if(this.userID){
+            return <div className="page" id="my">
+                <Header hasRightBtn={"充值"} title="我的秀"/>
+                <Content hasFooter={true}>
+                    <MyContent/>
+                </Content>
+                <Footer hasFooter={true}/>
+            </div>
+        }else{
+            return <Login />
+        }
+        
     }
 }
 export default My;
