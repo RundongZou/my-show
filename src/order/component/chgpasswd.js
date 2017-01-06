@@ -11,8 +11,13 @@ class Chgpasswdlist extends React.Component{
     constructor(props){
         super(props)
         var username = JSON.parse(window.localStorage.getItem("user"))
+        if(!username){
+            username=""
+        }else {
+            username=username.id
+        }
         this.state={
-            username:username.id,
+            username:username,
             oldpassword:username.password||1212,
             password:"",
             newpassword1:"",

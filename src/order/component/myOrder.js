@@ -30,10 +30,8 @@ class OrderC extends React.Component{
         super(props)
     }
     render(){
-            console.log(this.props.num==1)
-            if(!this.props.num==1){
-                return <div></div>
-            }else{
+            console.log(this.props.num);
+            if(this.props.num==1){
                 return <div>
                     <div className="total">
                         <p>共<span className="active">{this.props.data.totalNum}</span>件 商品实付<span  className="active">￥{this.props.data.totalPrice.toFixed(1)}</span></p>
@@ -44,8 +42,9 @@ class OrderC extends React.Component{
                         <button onClick={()=>Action.cancelOrder(this.props.num)}>取消订单</button>
                     </div>
                 </div>
+            }else{
+                 return <div></div>
             }
-            
     }
 }
 class MyOrder extends React.Component{
